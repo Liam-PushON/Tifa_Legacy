@@ -1,6 +1,6 @@
 <?php
 
-require_once "Code/Tools/scssphp/scss.inc.php";
+require_once "Code/Core/Tools/scssphp/scss.inc.php";
 use Leafo\ScssPhp\Compiler;
 
 class Style {

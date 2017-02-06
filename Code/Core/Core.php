@@ -33,6 +33,16 @@ final class Core{
 			self::$page = '404';
 		}
 	}
+	function log($msg, $file, $overwrite = false){
+		$log = null;
+		if(!$overwrite){
+			$log = fopen('var/log/'.$file , 'a');
+		}else{
+			$log = fopen('var/log/'.$file , 'w');
+		}
+		fwrite($log, $msg."\n");
+		fclose($log);
+	}
 
 }
 
