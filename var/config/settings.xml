@@ -18,5 +18,9 @@
 			<package>folder</package>
 		</fallback>
 		<enable_internal_override>true</enable_internal_override>
+		<add_template_paths_to_html_comments>true</add_template_paths_to_html_comments>
 	</design>
+	<style>
+		<add_css_paths_to_css_comments>true</add_css_paths_to_css_comments>
+	</style>
 </settings>

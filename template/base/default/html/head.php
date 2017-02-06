@@ -1,1 +1,1 @@
-Base head <br>
+<link rel="stylesheet" type="text/css" href="<?php echo '/'.Core::$theme->findResource('css/theme.css', 'style'); ?>">

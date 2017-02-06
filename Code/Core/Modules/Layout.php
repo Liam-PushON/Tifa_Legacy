@@ -6,41 +6,76 @@ class Layout {
 	}
 
 	function build($page, $args = false) {
+		echo '<html>';
 		$layout = simplexml_load_file(Core::$theme->findResource($page, 'layout', $args));
 		$overrides = $this->layoutHasOverride($page, $args);
-		if(!$overrides){
+		if (!$overrides) {
 			foreach ($layout->layout->block as $block) {
+				if ($block->attributes()->open_tag) {
+					echo '<' . $block->attributes()->open_tag . '>';
+				}
+				if (Core::$settings->design->add_template_paths_to_html_comments == 'true') {
+					echo '<!--' . Core::$theme->findResource($block->attributes()->template, 'template') . '-->';
+				}
+				if ($block->attributes()->wrapper) {
+					echo '<' . $block->attributes()->wrapper . ($block->attributes()->wrapper_class ? ' class="' . $block->attributes()->wrapper_class . '" >' : '>');
+				}
 				include(Core::$theme->findResource($block->attributes()->template, 'template'));
+				if ($block->attributes()->wrapper) {
+					echo '</' . $block->attributes()->wrapper . '>';
+				}
+				if ($block->attributes()->close_tag) {
+					echo '<' . $block->attributes()->close_tag . '>';
+				}
 			}
-		}else{
+		} else {
 			foreach ($layout->layout->block as $block) {
 				$override = false;
 
-				foreach($overrides as $o){
-					if((string)$o[0] == (string)$block->attributes()->name){
+				foreach ($overrides as $o) {
+					if ((string)$o[0] == (string)$block->attributes()->name) {
 						$override = true;
 					}
 				}
-				if($override){
+				if ($override) {
+					if (Core::$settings->design->add_template_paths_to_html_comments == 'true') {
+						echo '<!--' . Core::$theme->findResource($o[1], 'template') . '-->';
+					}
+					if ($block->attributes()->wrapper) {
+						echo '<' . $block->attributes()->wrapper . ($block->attributes()->wrapper_class ? ' class="' . $block->attributes()->wrapper_class . '" >' : '>');
+					}
 					include(Core::$theme->findResource($o[1], 'template'));
-				}else{
+					if ($block->attributes()->wrapper) {
+						echo '</' . $block->attributes()->wrapper . '>';
+					}
+				} else {
+					if (Core::$settings->design->add_template_paths_to_html_comments == 'true') {
+						echo '<!--' . Core::$theme->findResource($block->attributes()->template, 'template') . '-->';
+					}
+					if ($block->attributes()->wrapper) {
+						echo '<' . $block->attributes()->wrapper . ($block->attributes()->wrapper_class ? ' class="' . $block->attributes()->wrapper_class . '" >' : '>');
+					}
 					include(Core::$theme->findResource($block->attributes()->template, 'template'));
+					if ($block->attributes()->wrapper) {
+						echo '</' . $block->attributes()->wrapper . '>';
+					}
 				}
 			}
 		}
+		echo '</html>';
 	}
 
 	function layoutHasOverride($page, $args = false) {
 		$layout = simplexml_load_file(Core::$theme->findResource($page, 'layout', $args));
-		if(Core::$theme->findResource('override/' . $page, 'layout', $args)){
+		if (Core::$theme->findResource('override/' . $page, 'layout', $args)) {
 			$override = simplexml_load_file(Core::$theme->findResource('override/' . $page, 'layout', $args));
-		}else{
+		} else {
 			return false;
 		}
 		$overrides = array();
 		if (file_exists(Core::$theme->findResource($page, 'layout', $args)) && file_exists(Core::$theme->findResource('override/' . $page, 'layout', $args))) {
-			if(Core::$theme->getResourcePriority('override/' . $page, 'layout', $args) <= Core::$theme->getResourcePriority($page, 'layout', $args)){
-				foreach($override->override->block as $block){
+			if (Core::$theme->getResourcePriority('override/' . $page, 'layout', $args) <= Core::$theme->getResourcePriority($page, 'layout', $args)) {
+				foreach ($override->override->block as $block) {
 					array_push($overrides, array($block->attributes()->name, $block->attributes()->template));
 				}
 			}

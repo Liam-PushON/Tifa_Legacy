@@ -11,13 +11,21 @@ class Style {
 		}
 	}
 
+	function compileSCSS(){
+
+	}
+
 	function compileCSS() {
 		$css = '';
 		foreach ($this->files as $file) {
-			$css = $css.file_get_contents($file)."\n";
+			if(Core::$settings->style->add_css_paths_to_css_comments == 'true'){
+				$css = $css.'/* '.$file." */\n".file_get_contents($file)."\n";
+			}else{
+				$css = $css.file_get_contents($file)."\n";
+			}
 		}
 		$loc = Core::$theme->findResource('css/', 'style');
-		$style = fopen($loc.'/style.css', 'w');
+		$style = fopen($loc.'/theme.css', 'w');
 		fwrite($style, $css);
 		fclose($style);
 	}

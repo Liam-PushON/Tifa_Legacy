@@ -1,0 +1,61 @@
+/* style/base/default/css/active/body.css */
+* {
+	box-sizing: border-box;
+}
+body, html {
+	margin: 0;
+	padding: 0;
+	font-family: 'Montserrat', sans-serif;
+}
+
+body {
+	background-color: #F3F3F3;
+}
+
+.wrapper{
+	max-width: 1080px;
+	width: 100%;
+	background-color: #e3e3e3;
+	padding:  0 30px;
+	margin: 0 auto;
+	height: 100%;
+	box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+	min-height: 1080px;
+}
+
+/* style/base/default/css/active/footer.css */
+footer{
+	min-height: 100px;
+	background-color: #434343;
+	min-width: 100%;
+	float: left;
+}
+footer div{
+	max-width: 1080px;
+	margin: 0 auto;
+}
+footer div.f-left{
+	color: white;
+	width: 50%;
+	margin: 15px 0;
+}
+
+footer div.f-left:first-child{
+	border-right: 1px solid white;
+}
+
+footer ul{
+	margin: 0;
+	list-style: none;
+}
+/* style/base/default/css/active/header.css */
+header {
+	min-height: 80px;
+	width: 100%;
+	background-color: #212121;
+	box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+	position: relative;
+	z-index: 1000;
+}
+/* style/base/default/css/active/misc.css */
+.f-left{float: left;}sty

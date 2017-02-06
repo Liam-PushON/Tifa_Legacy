@@ -20,7 +20,6 @@ final class Core{
 		self::handleURI();
 
 	}
-
 	function handleURI(){
 		$URI = strtolower($_SERVER['REQUEST_URI']);
 		$URI = explode('?', $URI)[0];
@@ -28,6 +27,8 @@ final class Core{
 			self::$page = 'admin';
 		}else if($URI == '/' || $URI == '/home'){
 			self::$page = 'home';
+		}else if(preg_match('(/post/[0-9])', $URI)){
+			self::$page = 'post';
 		}else{
 			self::$page = '404';
 		}
