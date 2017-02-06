@@ -1,5 +1,8 @@
 <?php
 
+require_once "Code/Tools/scssphp/scss.inc.php";
+use Leafo\ScssPhp\Compiler;
+
 class Style {
 
 	private $files = array();
@@ -7,12 +10,17 @@ class Style {
 	function __construct() {
 		if (Core::$settings->cache->enabled == 'false') {
 			$this->init();
+			$this->compileSCSS();
 			$this->compileCSS();
 		}
 	}
 
 	function compileSCSS(){
-
+		$scss = new Compiler();
+		$css =  $scss->compile(file_get_contents(Core::$theme->findResource('scss/theme.scss', 'style')));
+		$scss = fopen(Core::$theme->findResource('css/active/', 'style').'/scss_import.css', 'w');
+		fwrite($scss, $css);
+		fclose($scss);
 	}
 
 	function compileCSS() {
