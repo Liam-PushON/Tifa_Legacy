@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<homepage>
+	<layout>
+		<block name="head" template="html/head.php"/>
+		<block name="header" template="html/header.php"/>
+		<block name="body" template="html/body.php"/>
+		<block name="footer" template="html/footer.php"/>
+	</layout>
+</homepage>
