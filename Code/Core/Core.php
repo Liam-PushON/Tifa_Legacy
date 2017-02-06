@@ -13,9 +13,9 @@ final class Core{
 		include_once ('includes.php');
 		self::$database = new Database();
 		self::$layout = new Layout();
-		self::$style = new Style();
-		self::$template = new Template();
+		# self::$template = new Template();
 		self::$theme = new Theme();
+		self::$style = new Style();
 
 		self::handleURI();
 
