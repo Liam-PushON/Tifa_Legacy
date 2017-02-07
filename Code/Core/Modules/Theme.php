@@ -1,13 +1,11 @@
 <?php
 
 class Theme{
-
 	public $theme, $package, $fallback_theme, $fallback_package;
 
 	function __construct() {
 		$this->init();
 	}
-
 	function init() {
 		if(Core::$settings->cache->enabled == 'false'){
 			Core::$settings->design->theme = $this->theme = Core::$database->query('SELECT * FROM config WHERE `key`="theme"')[0]['value'];
@@ -44,7 +42,6 @@ class Theme{
 		}
 		return false;
 	}
-
 	function getResourcePriority($resource, $type, $args = false){
 		$themes = array($this->theme, $this->fallback_theme, 'base');
 		$packages = array($this->package, $this->fallback_package, 'default');
@@ -70,7 +67,6 @@ class Theme{
 		}
 		return 99;
 	}
-
 }
 
 ?>

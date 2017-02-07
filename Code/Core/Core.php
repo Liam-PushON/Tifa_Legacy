@@ -18,8 +18,8 @@ final class Core{
 		self::$style = new Style();
 
 		self::handleURI();
-
 	}
+
 	function handleURI(){
 		$URI = strtolower($_SERVER['REQUEST_URI']);
 		$URI = explode('?', $URI)[0];
@@ -33,6 +33,7 @@ final class Core{
 			self::$page = '404';
 		}
 	}
+
 	function log($msg, $file, $overwrite = false){
 		$log = null;
 		if(!$overwrite){
@@ -43,7 +44,6 @@ final class Core{
 		fwrite($log, $msg."\n");
 		fclose($log);
 	}
-
 }
 
 ?>

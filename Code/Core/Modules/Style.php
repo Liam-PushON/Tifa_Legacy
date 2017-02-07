@@ -4,7 +4,6 @@ require_once "Code/Core/Tools/scssphp/scss.inc.php";
 use Leafo\ScssPhp\Compiler;
 
 class Style {
-
 	private $files_css = array();
 	private $files_js = array();
 
@@ -20,7 +19,6 @@ class Style {
 			$this->finaliseJS();
 		}
 	}
-
 
 	function finaliseJS(){
 		$js = file_get_contents(Core::$theme->findResource('js/theme.js', 'style'));
@@ -42,8 +40,6 @@ class Style {
 		fwrite($style, $css);
 		fclose($style);
 	}
-
-
 
 	function compileSCSS(){
 		$scss = new Compiler();
@@ -78,8 +74,6 @@ class Style {
 		fwrite($style, $js);
 		fclose($style);
 	}
-
-
 
 	function init() {
 		//CSS

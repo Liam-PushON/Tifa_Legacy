@@ -2,9 +2,6 @@
 
 class Layout {
 
-	function __construct() {
-	}
-
 	function build($page, $args = false) {
 		echo '<html>';
 		$layout = simplexml_load_file(Core::$theme->findResource($page, 'layout', $args));
@@ -82,7 +79,6 @@ class Layout {
 		}
 		return count($overrides > 0) ? $overrides : false;
 	}
-
 }
 
 ?>

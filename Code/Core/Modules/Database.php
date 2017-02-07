@@ -1,14 +1,12 @@
 <?php
 
 class Database {
-
 	private $conn;
 	private $open = false;
 
 	function __construct() {
 		$this->init();
 	}
-
 	function init() {
 		$this->open();
 	}
