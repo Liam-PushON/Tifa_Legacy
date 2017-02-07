@@ -14,7 +14,7 @@ class Theme{
 			Core::$settings->design->package = $this->package = Core::$database->query('SELECT * FROM config WHERE `key`="package"')[0]['value'];
 			Core::$settings->design->fallback->theme = $this->fallback_theme = Core::$database->query('SELECT * FROM config WHERE `key`="fallback_theme"')[0]['value'];
 			Core::$settings->design->fallback->package = $this->fallback_package = Core::$database->query('SELECT * FROM config WHERE `key`="fallback_package"')[0]['value'];
-			Core::$settings->saveXML('var/config/settings.xml');
+			Core::$settings->saveXML('config/settings.xml');
 		}else{
 			$this->theme = Core::$settings->design->theme;
 			$this->package = Core::$settings->design->package;

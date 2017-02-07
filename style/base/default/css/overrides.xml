@@ -1,0 +1,6 @@
+<overrides>
+	<override>
+		<original>{theme_path}</original>
+		<replacement>/style/base/default/images</replacement>
+	</override>
+</overrides>

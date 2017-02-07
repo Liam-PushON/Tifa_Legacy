@@ -8,7 +8,7 @@ final class Core{
 
 
 	function init() {
-		self::$settings = simplexml_load_file('var/config/settings.xml');
+		self::$settings = simplexml_load_file('config/settings.xml');
 
 		include_once ('includes.php');
 		self::$database = new Database();
