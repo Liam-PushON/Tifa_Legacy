@@ -1,26 +1,23 @@
 <?php
 
 final class Core{
-
-	public static $database, $layout, $style, $template, $theme;
+	public static $database, $layout, $style, $theme;
 	public static $settings;
 	public static $page;
 
-
-	function init() {
+	static function init() {
 		self::$settings = simplexml_load_file('config/settings.xml');
 
 		include_once ('includes.php');
 		self::$database = new Database();
 		self::$layout = new Layout();
-		# self::$template = new Template();
 		self::$theme = new Theme();
 		self::$style = new Style();
 
 		self::handleURI();
 	}
 
-	function handleURI(){
+	static function handleURI(){
 		$URI = strtolower($_SERVER['REQUEST_URI']);
 		$URI = explode('?', $URI)[0];
 		if($URI == '/admin'){
@@ -34,7 +31,7 @@ final class Core{
 		}
 	}
 
-	function log($msg, $file, $overwrite = false){
+	static function log($msg, $file, $overwrite = false){
 		$log = null;
 		if(!$overwrite){
 			$log = fopen('var/log/'.$file , 'a');
