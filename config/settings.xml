@@ -11,8 +11,9 @@
 		<table_prefix/>
 	</database>
 	<design>
-		<theme>custom</theme>
-		<package>liam</package>
+		<theme>custom&#13;
+</theme>
+		<package>default</package>
 		<fallback>
 			<theme>fallback</theme>
 			<package>folder</package>
@@ -22,5 +23,6 @@
 	</design>
 	<style>
 		<add_css_paths_to_css_comments>true</add_css_paths_to_css_comments>
+		<add_js_paths_to_js_comments>true</add_js_paths_to_js_comments>
 	</style>
 </settings>

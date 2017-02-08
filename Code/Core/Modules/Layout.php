@@ -4,20 +4,20 @@ class Layout {
 
 	function build($page, $args = false) {
 		echo '<html>';
-		$layout = simplexml_load_file(Core::$theme->findResource($page, 'layout', $args));
+		$layout = simplexml_load_file(Tifa::$theme->findResource($page, 'layout', $args));
 		$overrides = $this->layoutHasOverride($page, $args);
 		if (!$overrides) {
 			foreach ($layout->layout->block as $block) {
 				if ($block->attributes()->open_tag) {
 					echo '<' . $block->attributes()->open_tag . '>';
 				}
-				if (Core::$settings->design->add_template_paths_to_html_comments == 'true') {
-					echo '<!--' . Core::$theme->findResource($block->attributes()->template, 'template') . '-->';
+				if (Tifa::$settings->design->add_template_paths_to_html_comments == 'true') {
+					echo '<!--' . Tifa::$theme->findResource($block->attributes()->template, 'template') . '-->';
 				}
 				if ($block->attributes()->wrapper) {
 					echo '<' . $block->attributes()->wrapper . ($block->attributes()->wrapper_class ? ' class="' . $block->attributes()->wrapper_class . '" >' : '>');
 				}
-				include(Core::$theme->findResource($block->attributes()->template, 'template'));
+				include(Tifa::$theme->findResource($block->attributes()->template, 'template'));
 				if ($block->attributes()->wrapper) {
 					echo '</' . $block->attributes()->wrapper . '>';
 				}
@@ -35,24 +35,24 @@ class Layout {
 					}
 				}
 				if ($override) {
-					if (Core::$settings->design->add_template_paths_to_html_comments == 'true') {
-						echo '<!--' . Core::$theme->findResource($o[1], 'template') . '-->';
+					if (Tifa::$settings->design->add_template_paths_to_html_comments == 'true') {
+						echo '<!--' . Tifa::$theme->findResource($o[1], 'template') . '-->';
 					}
 					if ($block->attributes()->wrapper) {
 						echo '<' . $block->attributes()->wrapper . ($block->attributes()->wrapper_class ? ' class="' . $block->attributes()->wrapper_class . '" >' : '>');
 					}
-					include(Core::$theme->findResource($o[1], 'template'));
+					include(Tifa::$theme->findResource($o[1], 'template'));
 					if ($block->attributes()->wrapper) {
 						echo '</' . $block->attributes()->wrapper . '>';
 					}
 				} else {
-					if (Core::$settings->design->add_template_paths_to_html_comments == 'true') {
-						echo '<!--' . Core::$theme->findResource($block->attributes()->template, 'template') . '-->';
+					if (Tifa::$settings->design->add_template_paths_to_html_comments == 'true') {
+						echo '<!--' . Tifa::$theme->findResource($block->attributes()->template, 'template') . '-->';
 					}
 					if ($block->attributes()->wrapper) {
 						echo '<' . $block->attributes()->wrapper . ($block->attributes()->wrapper_class ? ' class="' . $block->attributes()->wrapper_class . '" >' : '>');
 					}
-					include(Core::$theme->findResource($block->attributes()->template, 'template'));
+					include(Tifa::$theme->findResource($block->attributes()->template, 'template'));
 					if ($block->attributes()->wrapper) {
 						echo '</' . $block->attributes()->wrapper . '>';
 					}
@@ -63,15 +63,15 @@ class Layout {
 	}
 
 	function layoutHasOverride($page, $args = false) {
-		$layout = simplexml_load_file(Core::$theme->findResource($page, 'layout', $args));
-		if (Core::$theme->findResource('override/' . $page, 'layout', $args)) {
-			$override = simplexml_load_file(Core::$theme->findResource('override/' . $page, 'layout', $args));
+		$layout = simplexml_load_file(Tifa::$theme->findResource($page, 'layout', $args));
+		if (Tifa::$theme->findResource('override/' . $page, 'layout', $args)) {
+			$override = simplexml_load_file(Tifa::$theme->findResource('override/' . $page, 'layout', $args));
 		} else {
 			return false;
 		}
 		$overrides = array();
-		if (file_exists(Core::$theme->findResource($page, 'layout', $args)) && file_exists(Core::$theme->findResource('override/' . $page, 'layout', $args))) {
-			if (Core::$theme->getResourcePriority('override/' . $page, 'layout', $args) <= Core::$theme->getResourcePriority($page, 'layout', $args)) {
+		if (file_exists(Tifa::$theme->findResource($page, 'layout', $args)) && file_exists(Tifa::$theme->findResource('override/' . $page, 'layout', $args))) {
+			if (Tifa::$theme->getResourcePriority('override/' . $page, 'layout', $args) <= Tifa::$theme->getResourcePriority($page, 'layout', $args)) {
 				foreach ($override->override->block as $block) {
 					array_push($overrides, array($block->attributes()->name, $block->attributes()->template));
 				}

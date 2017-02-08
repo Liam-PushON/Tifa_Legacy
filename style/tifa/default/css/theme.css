@@ -1,0 +1,141 @@
+/* style/tifa/default/css/active/body.css */
+* {
+	box-sizing: border-box;
+}
+body, html {
+	margin: 0;
+	padding: 0;
+	font-family: 'Montserrat', sans-serif;
+}
+
+body {
+	background-color: #F3F3F3;
+}
+
+.wrapper{
+	max-width: 1080px;
+	width: 100%;
+	background-color: #e3e3e3;
+	padding:  0 30px;
+	margin: 0 auto;
+	height: 100%;
+	box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+	min-height: 1080px;
+}
+
+
+.inner{
+	padding-top: 30px;
+}
+.inner h1{
+	margin-top: 0;
+}
+
+.inner p span a{
+	color: #1e90ff;
+	text-decoration: none;
+	cursor: pointer;
+}
+.inner p span a:hover {
+	color: #1eb9e8;
+}
+/* style/tifa/default/css/active/footer.css */
+footer{
+	min-height: 100px;
+	background-color: #434343;
+	min-width: 100%;
+	float: left;
+}
+footer div{
+	max-width: 1080px;
+	margin: 0 auto;
+}
+footer div.f-left{
+	color: white;
+	width: 50%;
+	margin: 15px 0;
+}
+
+footer div.f-left:first-child{
+	border-right: 1px solid white;
+}
+
+footer ul{
+	margin: 0;
+	list-style: none;
+}
+/* style/tifa/default/css/active/header.css */
+header {
+	min-height: 80px;
+	width: 100%;
+	background-color: #212121;
+	box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+	position: relative;
+	z-index: 1000;
+}
+/* style/tifa/default/css/active/input.css */
+input{
+	border: none;
+	padding: 8px 12px;
+	border-radius: 3px;
+}
+
+.search-bar input{
+	max-width: 365px;
+	width: 70%;
+	border-radius: 3px 0  0 3px;
+	float:left
+}
+
+.search-bar button{
+	border: none;
+	border-radius: 0 3px 3px 0;
+	padding: 8px 16px;
+	background-color: #343434;
+	color: #fff;
+	box-shadow: -1px 0px 5px 0px rgba(0, 0, 0, 0.75);
+	max-width: 85px;
+	width: 30%;
+	float:left
+}
+
+/* style/tifa/default/css/active/misc.css */
+.f-left{float: left;}
+/* style/tifa/default/css/active/scss_import.css */
+
+/* style/tifa/default/css/active/signup.css */
+#sign-up_form {
+	width: 100%;
+
+}
+
+@media (min-width: 768px) {
+	#sign-up_form {
+		width: 50%;
+	}
+}
+
+#sign-up_form label {
+	width: 50%;
+	float: left;
+}
+
+#sign-up_form input {
+	width: 50%;
+	float: right;
+	border: none;
+}
+
+#sign-up_form input[name="year"] {
+	width: calc(50% * 0.4);
+}
+
+#sign-up_form input[name="month"], #sign-up_form input[name="day"] {
+	width: calc(50% * 0.3);
+	border-right: 1px solid #ccc;
+}
+
+.row{
+	float: left;
+	width: 100%;
+}

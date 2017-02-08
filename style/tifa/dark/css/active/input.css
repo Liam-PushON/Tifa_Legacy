@@ -1,0 +1,27 @@
+input{
+	padding: 8px 12px;
+	border-radius: 3px;
+	width: 100%;
+	max-width: 100%;
+	border: none;
+}
+
+.search-bar input{
+	border-radius: 3px 0 0 3px;
+	width: 70%;
+	float:left;
+	max-width:365px;
+}
+
+.search-bar button{
+	padding: 8px 12px;
+	border-radius: 0 3px 3px 0;
+	width: 30%;
+	float: left;
+	max-width: 85px;
+	border: none;
+	background-color: #F0F0F0;
+}
+.search-bar button:focus{
+	background-color: #F2F2F2;
+}

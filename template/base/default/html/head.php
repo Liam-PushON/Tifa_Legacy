@@ -1,2 +1,0 @@
-<link rel="stylesheet" type="text/css" href="<?php echo '/'.Core::$theme->findResource('css/theme.css', 'style'); ?>">
-<script src="<?php echo '/'.Core::$theme->findResource('js/theme.js', 'style'); ?>"></script>

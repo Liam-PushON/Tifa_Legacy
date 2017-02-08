@@ -1,0 +1,35 @@
+#sign-up_form {
+	width: 100%;
+
+}
+
+@media (min-width: 768px) {
+	#sign-up_form {
+		width: 50%;
+	}
+}
+
+#sign-up_form label {
+	width: 50%;
+	float: left;
+}
+
+#sign-up_form input {
+	width: 50%;
+	float: right;
+	border: none;
+}
+
+#sign-up_form input[name="year"] {
+	width: calc(50% * 0.4);
+}
+
+#sign-up_form input[name="month"], #sign-up_form input[name="day"] {
+	width: calc(50% * 0.3);
+	border-right: 1px solid #ccc;
+}
+
+.row{
+	float: left;
+	width: 100%;
+}

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<_404>
+	<layout>
+		<block name="head" template="html/head.php" wrapper="head"/>
+		<block name="header" template="404/header.php" wrapper="header" open_tag="body"/>
+		<block name="body" template="404/body.php" wrapper="div" wrapper_class="wrapper"/>
+		<block name="footer" template="html/footer.php" wrapper="footer" close_tag="body"/>
+	</layout>
+</_404>

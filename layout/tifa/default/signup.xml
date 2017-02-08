@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<homepage>
+	<layout>
+		<block name="head" template="html/head.php" wrapper="head"/>
+		<block name="header" template="html/header.php" wrapper="header" open_tag="body"/>
+		<block name="body" template="signup/body.php" wrapper="div" wrapper_class="wrapper"/>
+		<block name="footer" template="html/footer.php" wrapper="footer" close_tag="body"/>
+	</layout>
+</homepage>

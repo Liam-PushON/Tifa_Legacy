@@ -1,6 +1,6 @@
 <?php
 
-final class Core{
+final class Tifa{
 	public static $database, $layout, $style, $theme;
 	public static $settings;
 	public static $page;
@@ -9,6 +9,7 @@ final class Core{
 		self::$settings = simplexml_load_file('config/settings.xml');
 
 		include_once ('includes.php');
+
 		self::$database = new Database();
 		self::$layout = new Layout();
 		self::$theme = new Theme();
@@ -26,6 +27,8 @@ final class Core{
 			self::$page = 'home';
 		}else if(preg_match('(/post/[0-9])', $URI)){
 			self::$page = 'post';
+		}else if($URI == '/signup' || $URI == '/sign-up'){
+			self::$page = 'sign-up';
 		}else{
 			self::$page = '404';
 		}

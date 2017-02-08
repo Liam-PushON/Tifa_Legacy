@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<_404>
-	<layout>
-		<block name="head" template="html/head.php"/>
-		<block name="header" template="html/header.php"/>
-		<block name="body" template="404/body.php"/>
-		<block name="footer" template="html/footer.php"/>
-	</layout>
-</_404>

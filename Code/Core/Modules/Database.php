@@ -29,10 +29,10 @@ class Database {
 	}
 	function open(){
 		if(!$this->open){
-			$host = Core::$settings->database->host;
-			$database_name = Core::$settings->database->database_name;
-			$username = Core::$settings->database->username;
-			$password = Core::$settings->database->password;
+			$host = Tifa::$settings->database->host;
+			$database_name = Tifa::$settings->database->database_name;
+			$username = Tifa::$settings->database->username;
+			$password = Tifa::$settings->database->password;
 			if ($host && $database_name && $username && $password && !$this->open) {
 				try {
 					$dsn = "mysql:host=" . $host . ";dbname=" . $database_name . ";";

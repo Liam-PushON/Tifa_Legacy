@@ -8,7 +8,7 @@ class Style {
 	private $files_js = array();
 
 	function __construct() {
-		if (Core::$settings->cache->enabled == 'false') {
+		if (Tifa::$settings->cache->enabled == 'false') {
 			$this->init();
 			//CSS
 			$this->compileSCSS();
@@ -21,64 +21,69 @@ class Style {
 	}
 
 	function finaliseJS(){
-		$js = file_get_contents(Core::$theme->findResource('js/theme.js', 'style'));
-		$replacements = simplexml_load_file(Core::$theme->findResource('js/overrides.xml', 'style'));
+		$js = file_get_contents(Tifa::$theme->findResource('js/theme.js', 'style'));
+		$replacements = simplexml_load_file(Tifa::$theme->findResource('js/overrides.xml', 'style'));
 		foreach($replacements->override as $r){
 			$css = str_replace($r->original, $r->replacement, $js);
 		}
-		$script = fopen(Core::$theme->findResource('js/theme.js', 'style'), 'w');
+		$script = fopen(Tifa::$theme->findResource('js/theme.js', 'style'), 'w');
 		fwrite($script, $css);
 		fclose($script);
 	}
 	function finaliseCSS(){
-		$css = file_get_contents(Core::$theme->findResource('css/theme.css', 'style'));
-		$replacements = simplexml_load_file(Core::$theme->findResource('css/overrides.xml', 'style'));
+		$css = file_get_contents(Tifa::$theme->findResource('css/theme.css', 'style'));
+		$replacements = simplexml_load_file(Tifa::$theme->findResource('css/overrides.xml', 'style'));
 		foreach($replacements->override as $r){
 			$css = str_replace($r->original, $r->replacement, $css);
 		}
-		$style = fopen(Core::$theme->findResource('css/theme.css', 'style'), 'w');
+		$style = fopen(Tifa::$theme->findResource('css/theme.css', 'style'), 'w');
 		fwrite($style, $css);
 		fclose($style);
 	}
 
 	function compileSCSS(){
 		$scss = new Compiler();
-		$css =  $scss->compile(file_get_contents(Core::$theme->findResource('scss/theme.scss', 'style')));
-		$scss = fopen(Core::$theme->findResource('css/active/', 'style').'/scss_import.css', 'w');
+		$css =  $scss->compile(file_get_contents(Tifa::$theme->findResource('scss/theme.scss', 'style')));
+		$scss = fopen(Tifa::$theme->findResource('css/active/', 'style').'/scss_import.css', 'w');
 		fwrite($scss, $css);
 		fclose($scss);
 	}
 	function compileCSS() {
 		$css = '';
 		foreach ($this->files_css as $file) {
-			if(Core::$settings->style->add_css_paths_to_css_comments == 'true'){
+			if(Tifa::$settings->style->add_css_paths_to_css_comments == 'true'){
 				$css = $css.'/* '.$file." */\n".file_get_contents($file)."\n";
 			}else{
 				$css = $css.file_get_contents($file)."\n";
 			}
 		}
-		$style = fopen(Core::$theme->findResource('css/theme.css', 'style'), 'w');
+		$style = fopen(Tifa::$theme->findResource('css/theme.css', 'style'), 'w');
 		fwrite($style, $css);
 		fclose($style);
 	}
 	function compileJS() {
 		$js = '';
 		foreach ($this->files_js as $file) {
-			if(Core::$settings->style->add_css_paths_to_css_comments == 'true'){
+			if(Tifa::$settings->style->add_js_paths_to_js_comments == 'true'){
 				$js = $js.'/* '.$file." */\n".file_get_contents($file)."\n";
 			}else{
 				$js = $js.file_get_contents($file)."\n";
 			}
 		}
-		$style = fopen(Core::$theme->findResource('js/theme.js', 'style'), 'w');
-		fwrite($style, $js);
-		fclose($style);
+		$script = fopen(Tifa::$theme->findResource('js/theme.js', 'style'), 'w');
+		fwrite($script, $js);
+		fclose($script);
 	}
 
 	function init() {
 		//CSS
-		$loc = Core::$theme->findResource('css/active/', 'style');
-		$dir = scandir($loc);
+		$loc = Tifa::$theme->findResource('css/active/', 'style');
+		if($loc){
+			$dir = scandir($loc);
+		}else{
+			Tifa::log($loc.' is an empty directory', 'errors.log');
+			return;
+		}
 		foreach ($dir as $i) {
 			if ($i != '.' && $i != '..') {
 				if (is_dir($loc . $i)) {
@@ -89,8 +94,14 @@ class Style {
 			}
 		}
 		//JS
-		$loc = Core::$theme->findResource('js/active/', 'style');
-		$dir = scandir($loc);
+		$loc = Tifa::$theme->findResource('js/active/', 'style');
+
+		if($loc){
+			$dir = scandir($loc);
+		}else{
+			Tifa::log($loc.' is an empty directory', 'errors.log');
+			return;
+		}
 		foreach ($dir as $i) {
 			if ($i != '.' && $i != '..') {
 				if (is_dir($loc . $i)) {
