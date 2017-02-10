@@ -11,12 +11,11 @@
 		<table_prefix/>
 	</database>
 	<design>
-		<theme>custom&#13;
-</theme>
+		<theme>tifa</theme>
 		<package>default</package>
 		<fallback>
-			<theme>fallback</theme>
-			<package>folder</package>
+			<theme>tifa</theme>
+			<package>dark</package>
 		</fallback>
 		<enable_internal_override>true</enable_internal_override>
 		<add_template_paths_to_html_comments>true</add_template_paths_to_html_comments>

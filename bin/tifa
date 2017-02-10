@@ -1,0 +1,5 @@
+#!/usr/bin/env php
+<?php
+//Gets cli arguments and stores them in $_GET
+parse_str(implode('&', array_slice($argv, 1)), $_GET);
+?>

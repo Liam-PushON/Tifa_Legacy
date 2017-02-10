@@ -1,2 +1,2 @@
-<link rel="stylesheet" type="text/css" href="<?php echo '/'.Tifa::$theme->findResource('css/theme.css', 'style'); ?>">
-<script src="<?php echo '/'.Tifa::$theme->findResource('js/theme.js', 'style'); ?>"></script>
+<link rel="stylesheet" type="text/css" href="<?php echo '/' . Tifa::$theme->findResource('css/theme.css', 'style'); ?>">
+<script src="<?php echo '/' . Tifa::$theme->findResource('js/theme.js', 'style'); ?>"></script>

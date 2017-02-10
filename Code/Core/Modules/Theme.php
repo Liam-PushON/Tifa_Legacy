@@ -24,7 +24,7 @@ class Theme{
 	function findResource($resource, $type, $args = false) {
 		$themes = array($this->theme, $this->fallback_theme, 'tifa');
 		$packages = array($this->package, $this->fallback_package, 'default');
-		if($args && Tifa::$layout->design->enable_internal_override == 'true'){
+		if($args && Tifa::$config->design->enable_internal_override == 'true'){
 			if($args['override_theme']){
 				$themes = array($args['override_theme'], $this->theme, $this->fallback_theme, 'tifa');
 			}
